@@ -1,0 +1,60 @@
+{
+    "week1": {
+        "monday": {
+            "date":"08.04.2019",
+            "weather": "sunny",
+            "temperature":{
+                "day": 10,
+                "night": 3
+            }
+        },
+        "tusday": {
+            "date":"09.04.2019",
+            "weather": "sunny/cloudy",
+            "temperature":{
+                "day": 8,
+                "night": 3
+            }
+        },
+        "wenesday": {
+            "date":"10.04.2019",
+            "weather": "windy",
+            "temperature":{
+                "day": 6,
+                "night": 1
+            }
+        },
+        "thursday": {
+            "date":"11.04.2019",
+            "weather": "cloudy",
+            "temperature":{
+                "day": 5,
+                "night": 0
+            }
+        },
+        "friday": {
+            "date":"12.04.2019",
+            "weather": "cloudy",
+            "temperature":{
+                "day": 5,
+                "night": -1
+            }
+        },
+        "saturday": {
+            "date":"13.04.2019",
+            "weather": "rainy",
+            "temperature":{
+                "day": 6,
+                "night": 1
+            }
+        },
+        "sunday": {
+            "date":"14.04.2019",
+            "weather": "sunny",
+            "temperature":{
+                "day": 8,
+                "night": 3
+            }
+        }
+    }
+  }
