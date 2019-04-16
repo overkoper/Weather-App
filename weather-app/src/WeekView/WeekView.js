@@ -26,6 +26,7 @@ class WeekView extends Component {
       <Wrapper>
         {days.map(day => (
           <Day
+            key={day[1].date}
             dayName={day[0]}
             date={day[1].date}
             weather={day[1].weather}
