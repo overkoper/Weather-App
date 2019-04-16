@@ -1,9 +1,5 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import sunny from "../img/sunny.svg";
-import cloudy from "../img/cloudy.svg";
-import partaly from "../img/partaly-cloudy.svg";
-import rainy from "../img/rainy.svg";
 
 class Day extends Component {
   state = {
@@ -13,6 +9,9 @@ class Day extends Component {
   };
   render() {
     const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
         width: 140px;
         height: 200px;
         border: 1px solid grey;
@@ -25,14 +24,14 @@ class Day extends Component {
         height: 70%;
         `
     const { dayName, weather, temp } = this.state;
-    console.log(weather);
+    
     return (
       <Wrapper>
         <div>{dayName}</div>
-        <Weather alt="weather symbol" src={sunny} />
+        <Weather alt="weather symbol" src={require(`../img/${weather}.svg`)} />
         <div>
-          <span>Day: {temp.day}</span>
-          <span>Night: {temp.night}</span>
+          <div>Day: {temp.day}</div>
+          <div>Night: {temp.night}</div>
         </div>
       </Wrapper>
     );
