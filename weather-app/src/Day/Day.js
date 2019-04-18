@@ -21,10 +21,9 @@ class Day extends Component {
       align-items: center;
       width: 140px;
       height: 200px;
-      border: 1px solid grey;
-      background-color: ${props => props.active && "grey"};
-      height: ${props => props.active && "230px"};
-      box-shadow: ${props => props.active && "0px 2px 5px 5px rgba(0,0,0,0.75)"};
+      border: ${props =>props.active && "1px solid grey"};
+      background-color: ${props => props.active && "#efefef"};
+      padding-bottom: 10px;
     `;
     const Weather = styled.img`
       width: 70%;
@@ -42,8 +41,8 @@ class Day extends Component {
         <div>{date}</div>
         <Weather alt="weather symbol" src={require(`../img/${weather}.svg`)} />
         <div>
-          <div>Day: {temp.day} °C</div>
-          <div>Night: {temp.night} °C</div>
+          <div>Day: {temp.day}</div>
+          <div>Night: {temp.night}</div>
         </div>
       </Wrapper>
     ) : (
