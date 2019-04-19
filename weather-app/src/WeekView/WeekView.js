@@ -18,12 +18,15 @@ class WeekView extends Component {
         this.setState({
           forecast: data.list,
           today: data.list[0].dt_txt.split(" ")[0],
-          day1Array: data.list.filter(day=>day.dt_txt.split(" ")[0]===data.list[0].dt_txt.split(" ")[0])
+          day1Array: data.list.filter(
+            day =>
+              day.dt_txt.split(" ")[0] === data.list[0].dt_txt.split(" ")[0]
+          )
         })
       );
   }
   render() {
-    const { forecast, day1Array } = this.state
+    const { forecast, day1Array } = this.state;
 
     const day2Start =
       day1Array[day1Array.length - 1] &&
@@ -53,9 +56,9 @@ class WeekView extends Component {
       margin: 0px 12px 0px 12px;
     `;
     return (
-      <Wrapper>
-        {this.state.day1Array &&
-          this.state.day1Array.map(day => (
+      <>
+        <Wrapper>
+          {day1Array.map(day => (
             <Day
               key={day.dt}
               dayName={day.dt}
@@ -64,7 +67,63 @@ class WeekView extends Component {
               temp={day.main}
             />
           ))}
-      </Wrapper>
+        </Wrapper>
+        <Wrapper>
+          {day2Array.map(day => (
+            <Day
+              key={day.dt}
+              dayName={day.dt}
+              date={day.dt_txt}
+              weather={day.weather[0]}
+              temp={day.main}
+            />
+          ))}
+        </Wrapper>
+        <Wrapper>
+          {day3Array.map(day => (
+            <Day
+              key={day.dt}
+              dayName={day.dt}
+              date={day.dt_txt}
+              weather={day.weather[0]}
+              temp={day.main}
+            />
+          ))}
+        </Wrapper>
+        <Wrapper>
+          {day4Array.map(day => (
+            <Day
+              key={day.dt}
+              dayName={day.dt}
+              date={day.dt_txt}
+              weather={day.weather[0]}
+              temp={day.main}
+            />
+          ))}
+        </Wrapper>
+        <Wrapper>
+          {day5Array.map(day => (
+            <Day
+              key={day.dt}
+              dayName={day.dt}
+              date={day.dt_txt}
+              weather={day.weather[0]}
+              temp={day.main}
+            />
+          ))}
+        </Wrapper>
+        <Wrapper>
+          {day6Array.map(day => (
+            <Day
+              key={day.dt}
+              dayName={day.dt}
+              date={day.dt_txt}
+              weather={day.weather[0]}
+              temp={day.main}
+            />
+          ))}
+        </Wrapper>
+      </>
     );
   }
 }
