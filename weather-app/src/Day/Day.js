@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import weatherIcon from "../img/sunny.svg"
 
 class Day extends Component {
   state = {
@@ -39,19 +40,19 @@ class Day extends Component {
       <Wrapper active onClick={() => this.markActive()}>
         <div>{dayName}</div>
         <div>{date}</div>
-        <Weather alt="weather symbol" src={require(`../img/${weather}.svg`)} />
+        <Weather alt="weather symbol" src={weatherIcon} />
         <div>
-          <div>Day: {temp.day}</div>
-          <div>Night: {temp.night}</div>
+          <Temp>Temp max: {Math.round(temp.temp_max)}</Temp>
+          <Temp>Temp min: {Math.round(temp.temp_min)}</Temp>
         </div>
       </Wrapper>
     ) : (
       <Wrapper onClick={() => this.markActive()}>
         <div>{dayName}</div>
-        <Weather alt="weather symbol" src={require(`../img/${weather}.svg`)} />
+        <Weather alt="weather symbol" src={weatherIcon} />
         <div>
-          <Temp>Day: {temp.day}</Temp>
-          <Temp>Night: {temp.night}</Temp>
+          <Temp>Temp max: {Math.round(temp.temp_max)}</Temp>
+          <Temp>Temp min: {Math.round(temp.temp_min)}</Temp>
         </div>
       </Wrapper>
     );
