@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import * as moment from "moment";
 
 class Day extends Component {
   state = {
@@ -33,25 +34,26 @@ class Day extends Component {
     &:after{
         content: "°C";
     }
+    color: ${props=>props.night && "grey"};
     `
     const { date, active, dayName, weather, temp } = this.state;
     return active ? (
       <Wrapper active onClick={() => this.markActive()}>
-        <div>{dayName}</div>
-        <div>{date}</div>
+        <div>{moment(date).format("dddd")}</div>
+        <div>{moment(date).format("YYYY-MM-DD HH:mm")}</div>
         <Weather alt="weather symbol" src={require(`../img/${weather.icon}.svg`)} />
         <div>
           <Temp>Temp max: {Math.round(temp.temp_max)}</Temp>
-          <Temp>Temp min: {Math.round(temp.temp_min)}</Temp>
+          <Temp night>Temp min: {Math.round(temp.temp_min)}</Temp>
         </div>
       </Wrapper>
     ) : (
       <Wrapper onClick={() => this.markActive()}>
-        <div>{dayName}</div>
+        <div>{moment(date).format("dddd")}</div>
         <Weather alt="weather symbol" src={require(`../img/${weather.icon}.svg`)} />
         <div>
           <Temp>Temp max: {Math.round(temp.temp_max)}</Temp>
-          <Temp>Temp min: {Math.round(temp.temp_min)}</Temp>
+          <Temp night>Temp min: {Math.round(temp.temp_min)}</Temp>
         </div>
       </Wrapper>
     );
