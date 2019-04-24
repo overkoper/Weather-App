@@ -71,8 +71,8 @@ class WeekView extends Component {
     return (
       <Wrapper>
         {fullWeekArray.map(day => (
-            day.map(hour => (
-              moment(hour.dt_txt).format("HH")==="12"?
+            day.map((hour, index, day) => (
+              index===day.length-3?
               <Day
                 key={hour.dt}
                 date={hour.dt_txt}
