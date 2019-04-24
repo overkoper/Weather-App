@@ -7,8 +7,14 @@ class WeekView extends Component {
   state = {
     forecast: [],
     today: "",
-    day1Array: []
+    day1Array: [],
+    day: 1
   };
+  dayIncrement(){
+    this.setState({
+      day: this.state.day+1
+    })
+  }
   componentDidMount() {
     fetch(
       "http://api.openweathermap.org/data/2.5/forecast?q=Gdansk,pl&units=metric&lang=pl&APPID=cc4d5fa4446c609bb569254b030bb1d7"
