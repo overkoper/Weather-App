@@ -10,10 +10,10 @@ class WeekView extends Component {
     day1Array: [],
     day: 1
   };
-  dayIncrement(){
+  dayIncrement() {
     this.setState({
-      day: this.state.day+1
-    })
+      day: this.state.day + 1
+    });
   }
   componentDidMount() {
     fetch(
@@ -55,81 +55,33 @@ class WeekView extends Component {
       day => day.dt >= day5Start && day.dt < day6Start
     );
     const day6Array = forecast.filter(day => day.dt >= day6Start);
-
+    const fullWeekArray = [
+      day1Array,
+      day2Array,
+      day3Array,
+      day4Array,
+      day5Array,
+      day6Array
+    ];
     const Wrapper = styled.div`
       display: flex;
       width: 1000px;
       margin: 0px 12px 0px 12px;
     `;
     return (
-      <>
-        <Wrapper>
-          {day1Array.map(day => (
-            <Day
-              key={day.dt}
-              dayName={day.dt}
-              date={day.dt_txt}
-              weather={day.weather[0]}
-              temp={day.main}
-            />
-          ))}
-        </Wrapper>
-        <Wrapper>
-          {day2Array.map(day => (
-            <Day
-              key={day.dt}
-              dayName={day.dt}
-              date={day.dt_txt}
-              weather={day.weather[0]}
-              temp={day.main}
-            />
-          ))}
-        </Wrapper>
-        <Wrapper>
-          {day3Array.map(day => (
-            <Day
-              key={day.dt}
-              dayName={day.dt}
-              date={day.dt_txt}
-              weather={day.weather[0]}
-              temp={day.main}
-            />
-          ))}
-        </Wrapper>
-        <Wrapper>
-          {day4Array.map(day => (
-            <Day
-              key={day.dt}
-              dayName={day.dt}
-              date={day.dt_txt}
-              weather={day.weather[0]}
-              temp={day.main}
-            />
-          ))}
-        </Wrapper>
-        <Wrapper>
-          {day5Array.map(day => (
-            <Day
-              key={day.dt}
-              dayName={day.dt}
-              date={day.dt_txt}
-              weather={day.weather[0]}
-              temp={day.main}
-            />
-          ))}
-        </Wrapper>
-        <Wrapper>
-          {day6Array.map(day => (
-            <Day
-              key={day.dt}
-              dayName={day.dt}
-              date={day.dt_txt}
-              weather={day.weather[0]}
-              temp={day.main}
-            />
-          ))}
-        </Wrapper>
-      </>
+      <Wrapper>
+        {fullWeekArray.map(day => (
+            day.map(hour => (
+              moment(hour.dt_txt).format("HH:mm")==="12:00"?
+              <Day
+                key={hour.dt}
+                date={hour.dt_txt}
+                weather={hour.weather[0]}
+                temp={hour.main}
+              />:null
+            ))
+        ))}
+      </Wrapper>
     );
   }
 }

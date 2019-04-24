@@ -36,7 +36,7 @@ class Day extends Component {
     }
     color: ${props=>props.night && "grey"};
     `
-    const { date, active, dayName, weather, temp } = this.state;
+    const { date, active, weather, temp } = this.state;
     return active ? (
       <Wrapper active onClick={() => this.markActive()}>
         <div>{moment(date).format("dddd")}</div>
