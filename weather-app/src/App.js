@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import WeekView from "./WeekView";
-import WeatherDisplay from "./WeatherDisplay";
 
 class App extends Component {
   render() {
@@ -12,7 +11,6 @@ class App extends Component {
     return (
       <Wrapper>
         <WeekView />
-        <WeatherDisplay />
       </Wrapper>
     );
   }

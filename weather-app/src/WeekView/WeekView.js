@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import * as moment from "moment";
 import Day from "../Day";
+import WeatherDisplay from "../WeatherDisplay";
 
 class WeekView extends Component {
   state = {
@@ -10,10 +11,8 @@ class WeekView extends Component {
     day1Array: [],
     day: 1
   };
-  dayIncrement() {
-    this.setState({
-      day: this.state.day + 1
-    });
+  selectDay(event) {
+    console.log(event.target);
   }
   componentDidMount() {
     fetch(
@@ -69,19 +68,23 @@ class WeekView extends Component {
       margin: 0px 12px 0px 12px;
     `;
     return (
-      <Wrapper>
-        {fullWeekArray.map(day => (
-            day.map((hour, index, day) => (
-              index===day.length-3?
-              <Day
-                key={hour.dt}
-                date={hour.dt_txt}
-                weather={hour.weather[0]}
-                temp={hour.main}
-              />:null
-            ))
-        ))}
-      </Wrapper>
+      <>
+        <WeatherDisplay />
+        <Wrapper onClick={this.selectDay}>
+          {fullWeekArray.map(day =>
+            day.map((hour, index, day) =>
+              index === day.length - 3 ? (
+                <Day
+                  key={hour.dt}
+                  date={hour.dt_txt}
+                  weather={hour.weather[0]}
+                  temp={hour.main}
+                />
+              ) : null
+            )
+          )}
+        </Wrapper>
+      </>
     );
   }
 }
