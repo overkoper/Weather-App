@@ -27,6 +27,7 @@ class Day extends Component {
       height: 70%;
     `;
     const Description = styled.div`
+    text-align: center;
     padding: 10px 0px 10px 0px;
     font-size: 12px;
     `
