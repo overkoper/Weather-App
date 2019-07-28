@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import * as moment from "moment";
-import 'moment/locale/pl'
+import 'moment/locale/pl';
+
+import { DayBlock } from "./styled/DayBlock";
+import { Date } from "./styled/Date";
+import { Weather } from "./styled/Weather";
 
 class Day extends Component {
   state = {
@@ -11,21 +15,9 @@ class Day extends Component {
     date: this.props.date
   };
   render() {
-    const Wrapper = styled.div`
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 160px;
-      height: 200px;
-      padding-bottom: 10px;
-    `;
-    const Date = styled.div`
-    padding: 5px 0px 10px 0px;
-    `
-    const Weather = styled.img`
-      width: 70%;
-      height: 70%;
-    `;
+    
+    
+    
     const Description = styled.div`
     text-align: center;
     padding: 10px 0px 10px 0px;
@@ -44,7 +36,7 @@ class Day extends Component {
     `;
     const { date, weather, temp } = this.state;
     return (
-      <Wrapper>
+      <DayBlock>
         <div>{moment(date).locale("pl").format("dddd")}</div>
         <Date>{moment(date).format("YYYY-MM-DD")}</Date>
         <Weather
@@ -56,7 +48,7 @@ class Day extends Component {
           <Temp>{Math.round(temp.temp_max)}</Temp>
           <Temp min>{Math.round(temp.temp_min)}</Temp>
         </Container>
-      </Wrapper>
+      </DayBlock>
     );
   }
 }
